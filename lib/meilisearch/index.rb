@@ -684,11 +684,8 @@ module Meilisearch
     # @return [Hash{String => Object}]
     # @see https://www.meilisearch.com/docs/reference/api/stats#get-stats-of-an-index  Meilisearch API Reference
     def stats(show_internal_database_sizes: nil, size_format: nil)
-      params = {
-        showInternalDatabaseSizes: show_internal_database_sizes,
-        sizeFormat: size_format
-      }.compact
-      http_get "/indexes/#{@uid}/stats", params
+      params = { showInternalDatabaseSizes: show_internal_database_sizes, sizeFormat: size_format }
+      http_get "/indexes/#{@uid}/stats", params.compact
     end
 
     # Get the number of documents in the index.
